@@ -1,21 +1,29 @@
-import { Nav, Logo, MenuLink } from "./NavbarStyles";
-import { Link } from "react-router-dom";
+import { Nav, Logo, MenuLink, Hamburger, Menu } from "./NavbarStyles";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
 
-const myNavbar = () => {
+const MyNavbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Nav>
-      <div>
-        <i>{"<Clarusway"}</i>
+    <Nav justify="space-between" wrap="wrap">
+      <Logo to="/">
+        <i>{"<Clarusway>"}</i>
         <span>RECIPE</span>
-      </div>
-      <div>
-        <Link to="/"></Link>
-        <Link to="/"></Link>
-        <Link to="/"></Link>
-        <Link to="/"></Link>
-      </div>
+      </Logo>
+
+      <Hamburger onClick={() => setIsOpen(!isOpen)}>
+        <GiHamburgerMenu />
+      </Hamburger>
+      <Menu isOpen={isOpen}>
+        <MenuLink to="/">Home</MenuLink>
+        <MenuLink to="/about">About</MenuLink>
+        <MenuLink to="/register">Register</MenuLink>
+        <MenuLink to="/login" onClick={() => sessionStorage.clear()}>
+          Logout
+        </MenuLink>
+      </Menu>
     </Nav>
   );
 };
-
-export default myNavbar;
+export default MyNavbar;

@@ -8,14 +8,18 @@ import Recipe from "../../components/recipe/Recipe";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   const [query, setQuery] = useState("");
-  const [recipes, setrecipes] = useState([]);
+  const [recipes, setrecipes] = useState("");
+  const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
+  const [selectedMealType, setSelectedMealType] = useState(
+    mealType[0].toLowerCase()
+  );
+
+   const navigate = useNavigate();
 
   const myId = "ae0ba4fc";
   const myKey = "39548faacdda9d3da15d5f8c63746993";
-  const url = ` https://api.edamam.com/search?q=${query}&app_id=${myId}&app_key=${myKey}&&health=alcohol-free`;
+  const url = ` https://api.edamam.com/search?q=${query}&app_id=${myId}&app_key=${myKey}&mealType=${selectedMealType}`;
 
   const getRecipes = async () => {
     const result = await axios.get(url);
@@ -41,9 +45,9 @@ const Home = () => {
         <Button variant="contained" label="Submit" onClick={getRecipes}>
           Search
         </Button>
-        <Button variant="contained">Contained</Button>
+        <Button variant="contained" onClick={navigate("/recipe")} >Contained</Button>
       </Box>
-      <p onClick={navigate("/recipe")}  > </p>
+      <p  >  </p>
     </div>
   );
 };

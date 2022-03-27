@@ -1,10 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const FlexContainer = styled.div`
+export const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  justify-content: ${(props) => (props.justify ? props.justify : "center")};
+  align-items: ${(props) => (props.align ? props.align : "center")};
+  flex-wrap: ${(props) => props.wrap && props.wrap};
 `;
-
-export default FlexContainer;
