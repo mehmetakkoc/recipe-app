@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Recipe = ({recipe}) => {
+const Details = ({recipe}) => {
   return (
     <div>
       <img src={recipe["recipe"]["image"]} alt="" />
@@ -9,4 +9,4 @@ const Recipe = ({recipe}) => {
   );
 };
 
-export default Recipe;
+export default Details;
