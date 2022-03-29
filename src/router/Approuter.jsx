@@ -4,8 +4,10 @@ import About from "../pages/about/About";
 import Home from "../pages/home/Home";
 import PrivateRouter from "./PrivateRouter";
 import Login from "../pages/login/Login";
-import MyNavbar from "../components/navbar/myNavbar";
-// import Recipe from "../components/recipe/Recipe"
+import MyNavbar from "../components/navbar/MyNavbar";
+import Details from "../pages/details/Details"
+import Register from "../pages/register/Register"
+
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -21,6 +23,10 @@ const Approuter = () => {
         <Route path="/about" element={<PrivateRouter />}>
           <Route path="" element={<About />} />
         </Route>
+        <Route path="/details" element={<PrivateRouter />}>
+          <Route path="" element={<Details />} />
+        </Route>
+        <Route path="/register" element={<Register />} />
 
         <Route path="/login" element={<Login />} />
       </Routes>
